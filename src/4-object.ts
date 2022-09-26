@@ -8,7 +8,7 @@ export {};
  * 4. Nested, Object of Object
  * 5. Object destructuring
  */
- let newNum = 3
+
 /**
  * 1. Object Literal
  */
