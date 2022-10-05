@@ -35,6 +35,14 @@ export {}; // quick fix for global variable
 
 // }
 
+type Greeter = (string: string) => void;
+const callback = (url: string, cb: Greeter) => {
+    return cb(url);
+};
+const fn = (url: string) => {
+    console.log(url);
+};
+callback('www.google.com', fn);
 /********** 2. optional & default parameters  ***********/
 /*
 | parameters | required | default value |
@@ -55,6 +63,18 @@ function submitContact(firstName, lastName, languange, gender){
 }
 */
 
+const submitContact = (firstName: string, lastName: string, gender?: string, languange = 'english') => {
+    return {
+        firstName,
+        lastName,
+        languange,
+        gender,
+    };
+};
+
+const coba = submitContact('Labib', 'Ansorudin', 'boy', 'indonesia');
+console.log(coba);
+
 /********** 3. Rest Parameter  ***********/
 /*
 function fruitsCollection(item, ...restItems) {
@@ -63,6 +83,12 @@ function fruitsCollection(item, ...restItems) {
 let fruits = fruitsCollection('Apple', 'Mango', 'Avocado');
 // console.log(fruits);
 */
+
+// kalau rest parameter, bentuk tipe data nya adalah array of, disini contohnya array of string => string[]
+const fruitsCollection = (item: string, ...restItems: string[]) => {
+    return console.log(item + ' ' + restItems.join(' '));
+};
+const fruits = fruitsCollection('apple', 'manggo', 'avocado');
 
 /********* 4. conditional type with union ***********/
 /*
@@ -73,3 +99,8 @@ let fruits = fruitsCollection('Apple', 'Mango', 'Avocado');
 // function CT(param) {
 //   return param
 // }
+
+// pake union ( dua tipe data atau lebih dengan "|" )
+const CT = (params: string | number) => {
+    return params;
+};
